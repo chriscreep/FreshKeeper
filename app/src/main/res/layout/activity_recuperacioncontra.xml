@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".recuperacioncontra"
+    android:orientation="vertical"
+    android:background="@drawable/bg_login_">
+
+    <TextView
+        android:id="@+id/txttexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lora_subtitulo"
+        android:text="Enviar correo de recuperacion "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475" />
+
+    <EditText
+        android:id="@+id/txtcorreoelectronico"
+        android:layout_width="341dp"
+        android:layout_height="49dp"
+        android:background="@drawable/edittext_background"
+        android:elevation="3dp"
+        android:ems="20"
+        android:fontFamily="@font/lato_parrafos"
+        android:hint="Correo electrónico"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#474747"
+        android:textColorHint="#66474747"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.592"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btn_enviarcorreo"
+        android:layout_width="251dp"
+        android:layout_height="51dp"
+        android:background="@drawable/button_background_verde1"
+        android:fontFamily="@font/playfair_display_btn"
+        android:text="Enviar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtcorreoelectronico"
+        app:layout_constraintVertical_bias="0.313" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
