@@ -18,13 +18,13 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="40dp"
             android:src="@drawable/icon_user"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/txtgmial"
