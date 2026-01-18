@@ -30,38 +30,41 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/canasta" />
 
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/kaushan_titulos"
             android:text="Bienvenido a FreshKeeper"
             android:textColor="#000000"
             android:textSize="26sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
             tools:ignore="MissingConstraints" />
-
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="@font/lato_parrafos"
             android:inputType="textMultiLine"
-            android:text="FreshKeeper es la app diseñada para ayudarte a mantener tus alimentos frescos y en óptimas condiciones. En un mundo donde el desperdicio de alimentos es un problema creciente, FreshKeeper se convierte en tu aliado perfecto para regular el tiempo de vida útil de tus productos."
+            android:text="¡Mantén tus alimentos frescos por más tiempo!"
             android:textAlignment="center"
             android:textColor="#656363"
             android:textSize="12sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -69,7 +72,7 @@
             android:layout_width="256dp"
             android:layout_height="55dp"
             android:layout_marginStart="67dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="36dp"
             android:layout_marginEnd="67dp"
             android:background="@drawable/button_background_verde1"
             app:layout_constraintEnd_toEndOf="parent"
