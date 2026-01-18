@@ -13,11 +13,9 @@
         android:title="Productos"
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/navigation_agregar"
-        android:icon="@drawable/icon_agregar"
-        android:title="Agregar"
-        app:showAsAction="ifRoom"/>
+
+
+
 
     <item
         android:id="@+id/navigation_user"

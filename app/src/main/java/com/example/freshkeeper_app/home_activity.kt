@@ -35,9 +35,6 @@ class home_activity : AppCompatActivity() {
             } else if (item.itemId == R.id.navigation_add) {
                 newIndex = 1
                 newFragment = productos_fragment()
-            } else if (item.itemId == R.id.navigation_agregar) {
-                newIndex = 2
-                newFragment = Agregarproducto_fragment()
             } else if (item.itemId == R.id.navigation_user) {
                 newIndex = 3
                 newFragment = usuario_fragment()
