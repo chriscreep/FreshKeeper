@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".verproducto_fragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_form"
+        android:scaleType="centerCrop" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.5"
-        android:background="@drawable/bg_productos">
+        android:background="@drawable/bg_form">
 
         <EditText
             android:id="@+id/txtnombreproducto"
