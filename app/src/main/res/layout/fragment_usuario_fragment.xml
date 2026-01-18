@@ -4,22 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".usuario_fragment">
+    tools:context=".usuario_fragment"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_form"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="-35dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:paddingBottom="0dp">
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bg_form"
-            tools:layout_editor_absoluteX="3dp"
-            tools:layout_editor_absoluteY="21dp" />
-
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -29,14 +25,17 @@
             android:layout_marginTop="84dp"
             android:layout_marginEnd="40dp"
             android:src="@drawable/icon_user"
+            app:layout_constraintBottom_toTopOf="@+id/txtgmial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.347" />
 
         <TextView
             android:id="@+id/txtgmial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="228dp"
             android:fontFamily="@font/lora_subtitulo"
             android:gravity="center"
             android:text="AlexandraM@gmail.com"
@@ -44,12 +43,9 @@
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btncerrarsesion"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.071" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -132,11 +128,11 @@
             android:id="@+id/countProdVen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="1"
             android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-black"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -144,8 +140,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textxd"
             app:layout_constraintVertical_bias="0.0" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
