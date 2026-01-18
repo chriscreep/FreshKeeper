@@ -15,17 +15,16 @@
         android:layout_weight="0.5" >
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="193dp"
-            android:layout_height="193dp"
-            android:layout_marginTop="157dp"
-            android:layout_marginBottom="16dp"
+            android:id="@+id/imageView7"
+            android:layout_width="222dp"
+            android:layout_height="227dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_registrar"
-            tools:srcCompat="@drawable/usuariorojo" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/usuariorojo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
