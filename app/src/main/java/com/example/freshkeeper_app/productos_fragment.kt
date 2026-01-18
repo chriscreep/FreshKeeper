@@ -6,10 +6,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -27,8 +31,26 @@ class productos_fragment : Fragment() {
         return inflater.inflate(R.layout.fragment_productos_fragment, container, false)
     }
 
+
+
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val btnCerrarSesion = view.findViewById<ImageView>(R.id.btniragregar)
+
+
+        btnCerrarSesion.setOnClickListener {
+            val fragment = Agregarproducto_fragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
 
         listView = view.findViewById(R.id.listview)
         searchEditText = view.findViewById(R.id.txtcorreoelectronico2)
@@ -92,6 +114,9 @@ class productos_fragment : Fragment() {
             }
 
         setupSearch()
+
+
+
     }
 
     private fun setupSearch() {

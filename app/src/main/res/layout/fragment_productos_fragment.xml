@@ -51,7 +51,7 @@
                     tools:ignore="HardcodedText" />
 
                 <ImageView
-                    android:id="@+id/imageView9"
+                    android:id="@+id/btniragregar"
                     android:layout_width="104dp"
                     android:layout_height="85dp"
                     android:src="@drawable/icon_agregar"
