@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/itemName"
+        android:fontFamily="@font/lilitaone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mayonesa"
@@ -22,6 +23,7 @@
         android:id="@+id/itemDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cabincondensed_medium"
         android:text="Día de vencimiento: 28/11/2025"
         android:textColor="#757575"
         android:textSize="12sp"

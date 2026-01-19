@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="44dp"
                     android:fontFamily="@font/lilitaone"
-                    android:text="¿Algo para\nAgregar Hoy?"
+                    android:text="¿Algo para\nagregar hoy?"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
