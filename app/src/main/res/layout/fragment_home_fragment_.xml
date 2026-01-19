@@ -117,13 +117,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                app:cardCornerRadius="16dp"
+
                 app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
+                    app:cardCornerRadius="16dp"
                     android:padding="10dp">
 
                     <TextView
@@ -143,19 +144,19 @@
 
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tlIndicador"
-                        android:layout_width="wrap_content"
+                        android:layout_width="118dp"
                         android:layout_height="15dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="12dp"
                         android:background="@android:color/transparent"
                         app:tabBackground="@drawable/tab_selector"
-                        app:tabIndicatorHeight="0dp"
                         app:tabGravity="center"
-                        app:tabMode="fixed"
-                        app:tabMinWidth="15dp"
+                        app:tabIndicatorHeight="0dp"
                         app:tabMaxWidth="15dp"
-                        app:tabPaddingStart="0dp"
-                        app:tabPaddingEnd="0dp" />
+                        app:tabMinWidth="15dp"
+                        app:tabMode="fixed"
+                        app:tabPaddingEnd="0dp"
+                        app:tabPaddingStart="0dp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
