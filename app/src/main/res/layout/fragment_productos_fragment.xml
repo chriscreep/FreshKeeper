@@ -36,7 +36,7 @@
                     android:background="@drawable/edittext_background"
                     android:elevation="3dp"
                     android:ems="20"
-                    android:fontFamily="@font/lato_parrafos"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:hint="Buscar..."
                     android:inputType="text"
                     android:textColor="#474747"
