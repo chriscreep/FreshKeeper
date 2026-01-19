@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+
 class ProductoAdapter(
     private val context: Context,
     private var productos: MutableList<Producto>
@@ -22,17 +27,64 @@ class ProductoAdapter(
         val view = convertView ?: LayoutInflater.from(context)
             .inflate(R.layout.item_producto, parent, false)
 
+        val imgIcono = view.findViewById<ImageView>(R.id.imgIcono)
         val txtNombre = view.findViewById<TextView>(R.id.txtNombre)
         val txtFechaVencimiento = view.findViewById<TextView>(R.id.txtFechaVencimiento)
-        val txtFechaCompra = view.findViewById<TextView>(R.id.txtFechaCompra)
+        val imgEstado = view.findViewById<ImageView>(R.id.imgEstado) // El reloj
 
         val producto = productos[position]
 
         txtNombre.text = producto.nombre
-        txtFechaVencimiento.text = "Día de vencimiento: ${producto.fechaVencimiento}"
-        txtFechaCompra.text = "Día de compra: ${producto.fechaCompra}"
+        txtFechaVencimiento.text = "Vence el: ${producto.fechaVencimiento}"
+        imgIcono.setImageResource(obtenerIcono(producto.categoria))
+
+        // Lógica del Reloj de Estado
+        val diasRestantes = calcularDiasRestantes(producto.fechaVencimiento)
+
+        when {
+            diasRestantes > 7 -> {
+                // Más de una semana -> VERDE
+                imgEstado.setImageResource(R.drawable.ic_clock_green)
+            }
+            diasRestantes in 0..7 -> {
+                // Una semana o menos -> NARANJA
+                imgEstado.setImageResource(R.drawable.ic_clock_orange)
+            }
+            else -> {
+                // Vencido (negativo) -> ROJO
+                imgEstado.setImageResource(R.drawable.ic_clock_red)
+            }
+        }
 
         return view
+    }
+
+    private fun calcularDiasRestantes(fechaVencimientoStr: String): Long {
+        return try {
+            // Asegúrate de que el formato coincida con el que guardas en Firebase (ej: 15/01/2025)
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            val fechaVencimiento = LocalDate.parse(fechaVencimientoStr, formatter)
+            val hoy = LocalDate.now()
+
+            ChronoUnit.DAYS.between(hoy, fechaVencimiento)
+        } catch (e: Exception) {
+            0L // Si hay error de formato, lo trata como hoy
+        }
+    }
+    private fun obtenerIcono(categoria: String): Int {
+        return when (categoria.trim().lowercase()) {
+
+            "carnes y proteinas" -> R.drawable.ic_proteina
+            "aceites y condimentos" -> R.drawable.ic_condimentos
+            "granos y cereales" -> R.drawable.ic_granos
+            "enlatados" -> R.drawable.ic_enlatados
+            "salsas y aderezos" -> R.drawable.ic_aderezos
+            "frutas y verduras" -> R.drawable.ic_vegetales
+            "snacks" -> R.drawable.ic_snacks
+            "otros..." -> R.drawable.ic_otros
+
+            else -> R.drawable.ic_todos
+        }
     }
 
 

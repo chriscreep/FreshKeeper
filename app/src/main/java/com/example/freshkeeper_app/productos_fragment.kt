@@ -59,43 +59,43 @@ class productos_fragment : Fragment() {
         catCondimentos.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catCondimentos)
-            filtrarPorCategoria("Aceites y condimentos")
+            filtrarPorCategoria("aceites y condimentos")
         }
 
         catGranos.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catGranos)
-            filtrarPorCategoria("Granos y cereales")
+            filtrarPorCategoria("granos y cereales")
         }
 
         catEnlatados.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catEnlatados)
-            filtrarPorCategoria("Enlatados")
+            filtrarPorCategoria("enlatados")
         }
 
         catAderezos.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catAderezos)
-            filtrarPorCategoria("Salsa y aderezos")
+            filtrarPorCategoria("Salsas y aderezos")
         }
 
         catFrutas.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catFrutas)
-            filtrarPorCategoria("Frutas y verduras")
+            filtrarPorCategoria("frutas y verduras")
         }
 
         catSnacks.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catSnacks)
-            filtrarPorCategoria("Snacks")
+            filtrarPorCategoria("snacks")
         }
 
         catOtros.setOnClickListener {
             searchEditText.text.clear()
             marcarCategoriaSeleccionada(catOtros)
-            filtrarPorCategoria("Otros")
+            filtrarPorCategoria("otros...")
         }
 
 
@@ -179,14 +179,17 @@ class productos_fragment : Fragment() {
     }
 
 
+
     private fun filtrarPorCategoria(categoria: String) {
-        val catTrim = categoria.trim()
+        val target = categoria.trim().lowercase()
+
         listaActual = listaProductos.filter {
-            it.categoria.trim().startsWith(catTrim, ignoreCase = true)
+            it.categoria.trim().lowercase() == target
         }.toMutableList()
 
         adapter.updateList(listaActual)
     }
+
 
 
     private var categoriaSeleccionada: LinearLayout? = null
