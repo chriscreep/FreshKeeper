@@ -1,36 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/color_lista_verde"
     android:padding="16dp"
-    android:layout_margin="8dp">
+    android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/txtNombre"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imgIcono"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_todos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Nombre del producto"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@android:color/white" />
+        android:orientation="vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toEndOf="@id/imgIcono"
+        app:layout_constraintEnd_toStartOf="@id/imgEstado"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/txtFechaVencimiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Día de vencimiento: 10/1/2025"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txtNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre del producto"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#003311" />
 
-    <TextView
-        android:id="@+id/txtFechaCompra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Día de compra: 10/12/2024"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/txtFechaVencimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Día de vencimiento: 10/1/2025"
+            android:textColor="#666666"
+            android:textSize="14sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txtFechaCompra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Día de compra: 10/12/2024"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgEstado"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_clock_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
