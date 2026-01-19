@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="Buscar"
+            android:fontFamily="@font/lilitaone"
             android:textColor="@android:color/white"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -55,6 +56,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:hint="Cebolla, Pollo..."
+                android:fontFamily="@font/cabincondensed_medium"
                 android:paddingStart="10dp"
                 android:textColor="#474747"
                 android:textColorHint="#80474747"
@@ -100,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Todos"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -127,6 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Proteínas"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -153,6 +157,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:text="Aceites y condimentos"
                     android:textSize="12sp"
                     android:gravity="center"/>
@@ -181,6 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Granos y cereales"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -208,6 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Enlatados"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -235,6 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Salsa y aderezos"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -262,6 +270,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Frutas y verduras"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -289,6 +298,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Snacks"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
@@ -316,6 +326,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Otros"
+                    android:fontFamily="@font/cabincondensed_medium"
                     android:textSize="12sp"
                     android:gravity="center"/>
             </LinearLayout>
