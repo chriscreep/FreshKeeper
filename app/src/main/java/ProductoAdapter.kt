@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-
+import androidx.recyclerview.widget.RecyclerView
 class ProductoAdapter(
     private val context: Context,
     private var productos: MutableList<Producto>
@@ -41,4 +41,38 @@ class ProductoAdapter(
         productos.addAll(newList)
         notifyDataSetChanged()
     }
+}
+
+
+
+// Este adaptador es exclusivo para el RecyclerView de la Home
+class ProductoRecyclerAdapter(
+    private val productos: List<Producto>,
+    private val onItemClick: (Producto) -> Unit
+) : RecyclerView.Adapter<ProductoRecyclerAdapter.ProductoViewHolder>() {
+
+    // ViewHolder para gestionar la vista de cada item
+    class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val txtNombre: TextView = view.findViewById(R.id.itemName)
+        val txtFechaVencimiento: TextView = view.findViewById(R.id.itemDate)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
+        // Inflamos el layout item_vencimiento que diseñaste para la Home
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_vencimiento, parent, false)
+        return ProductoViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
+        val producto = productos[position]
+
+        holder.txtNombre.text = producto.nombre
+        holder.txtFechaVencimiento.text = "Vence el: ${producto.fechaVencimiento}"
+
+        // Manejo del clic para navegar al detalle del producto
+        holder.itemView.setOnClickListener { onItemClick(producto) }
+    }
+
+    override fun getItemCount(): Int = productos.size
 }
