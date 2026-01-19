@@ -1,398 +1,167 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F9FA"
     tools:context=".home_fragment">
 
-
-    <FrameLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ScrollView
-                android:id="@+id/scrollView2"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                android:layout_height="154dp"
+                android:background="@drawable/partearriba">
+
+                <TextView
+                    android:id="@+id/txtgmial2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:fontFamily="@font/lora_subtitulo"
+                    android:text="¿Algo para\nAgregar Hoy?"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/btnagregar2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <Button
+                    android:id="@+id/btnagregar2"
+                    android:layout_width="97dp"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_background_azul"
+                    android:fontFamily="@font/lora_subtitulo"
+                    android:text="Agregar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/txtgmial2"
+                    app:layout_constraintTop_toBottomOf="@+id/txtgmial2" />
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="140dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/canasta"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:orientation="vertical">
+                    android:layout_height="310dp"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vencen pronto"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvMensajeVencimiento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cargando productos..."
+                        android:textColor="#555555"
+                        android:textSize="14sp" />
+
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="144dp"
-                        android:background="@drawable/partearriba">
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="12dp"
+                        android:background="#EEEEEE" />
 
-                        <Button
-                            android:id="@+id/btnagregar2"
-                            android:layout_width="110dp"
-                            android:layout_height="45dp"
-                            android:layout_gravity="center"
-                            android:background="@drawable/button_background_verde1"
-                            android:fontFamily="@font/playfair_display_btn"
-                            android:text="Agregar"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-
-                            app:layout_constraintHorizontal_bias="0.192"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.959" />
-
-                        <TextView
-                            android:id="@+id/txtgmial2"
-                            android:layout_width="210dp"
-                            android:layout_height="96dp"
-                            android:fontFamily="@font/lora_subtitulo"
-                            android:gravity="center"
-                            android:text="Manten tus alimentos frescos"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.079"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.229" />
-
-                        <ImageView
-                            android:id="@+id/imageView5"
-                            android:layout_width="212dp"
-                            android:layout_height="129dp"
-                            android:layout_marginBottom="4dp"
-                            android:src="@drawable/canasta"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.919"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="1.0" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="20dp"
-                        android:background="@drawable/edittext_background"
-                        android:elevation="3dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/carne"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-
-                                    app:srcCompat="@drawable/carne" />
-
-                                <TextView
-                                    android:id="@+id/textView6"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Carnes y proteínas"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/aceite_condimentos"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/aceites_condimentos" />
-
-                                <TextView
-                                    android:id="@+id/textView8"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Aceites y condimentos"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/cereales"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/cereales" />
-
-                                <TextView
-                                    android:id="@+id/textView10"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Granos y cereales"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/enlatados"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/enlatados" />
-
-                                <TextView
-                                    android:id="@+id/textView11"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Enlatados"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/aderezos"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/salsas_aderezos" />
-
-                                <TextView
-                                    android:id="@+id/textView12"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Salsas y aderezos"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/frutas_verduras"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/frutas_verduras" />
-
-                                <TextView
-                                    android:id="@+id/textView13"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Frutas y verduras"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/snack"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/snacks" />
-
-                                <TextView
-                                    android:id="@+id/textView14"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Snacks"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_margin="10dp"
-                                android:layout_weight="0.25"
-                                android:orientation="vertical">
-
-                                <ImageView
-                                    android:id="@+id/otros"
-                                    android:layout_width="100dp"
-                                    android:layout_height="60dp"
-                                    android:layout_gravity="center"
-                                    app:srcCompat="@drawable/otros" />
-
-                                <TextView
-                                    android:id="@+id/textView15"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:fontFamily="@font/lora_subtitulo"
-                                    android:inputType="textMultiLine"
-                                    android:text="Otros..."
-                                    android:textAlignment="center"
-                                    android:textColor="@color/black"
-                                    android:textSize="8sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVencimientos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                    </LinearLayout>
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_vencimiento" />
 
                 </LinearLayout>
-            </ScrollView>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="405dp"
-                android:layout_height="361dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:id="@+id/txtgmial4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lora_subtitulo"
-                    android:gravity="center"
-                    android:text="Productos pronto a expirar"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.02" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-                <ListView
-                    android:id="@+id/listview"
-                    android:layout_width="415dp"
-                    android:layout_height="300dp"
-                    android:divider="@android:color/transparent"
-                    android:dividerHeight="16dp"
-                    android:padding="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="0dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recomendaciones"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                </ListView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vpRecomendaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="8dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tlIndicador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="12dp"
+                        android:background="@android:color/transparent"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabGravity="center"
+                        app:tabMode="fixed"
+                        app:tabMinWidth="15dp"
+                        app:tabMaxWidth="15dp"
+                        app:tabPaddingStart="0dp"
+                        app:tabPaddingEnd="0dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
