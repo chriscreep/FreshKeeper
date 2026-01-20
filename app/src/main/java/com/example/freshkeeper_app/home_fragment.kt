@@ -36,6 +36,11 @@ class home_fragment : Fragment() {
         Recomendacion("Conserva los bananos a temperatura ambiente para evitar que se pongan negros.",R.drawable.bg_food4),
         Recomendacion("Congela el pan en bolsas herméticas para mantener su textura por más tiempo.",R.drawable.bg_food5),
         Recomendacion("Los cítricos duran más tiempo si se guardan en el cajón inferior del refrigerador.",R.drawable.bg_food6),
+        Recomendacion("Mantén la heladera limpia, así evitas que residuos aceleran la descomposición de alimentos.", R.drawable.bg_food7),
+        Recomendacion("No guardes tomates en la nevera; mantenlos a temperatura ambiente para que conserven sabor.", R.drawable.bg_food8),
+        Recomendacion("Mantén los huevos en su caja original dentro del refrigerador para mayor duración.", R.drawable.bg_food9),
+        Recomendacion("Guarda los productos lácteos en la parte central del refrigerador, no en la puerta.", R.drawable.bg_food11),
+
     )
 
     override fun onCreateView(

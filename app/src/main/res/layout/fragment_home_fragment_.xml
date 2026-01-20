@@ -139,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/lilitaone"
-                        android:text="Recomendaciones"
+                        android:text="Datos frescos del día"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -152,7 +152,7 @@
 
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tlIndicador"
-                        android:layout_width="118dp"
+                        android:layout_width="163dp"
                         android:layout_height="15dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="12dp"
