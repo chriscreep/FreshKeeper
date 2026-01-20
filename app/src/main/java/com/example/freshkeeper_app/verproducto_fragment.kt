@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -22,9 +23,7 @@ class verproducto_fragment : Fragment() {
     private lateinit var btnClear: ImageView
     private lateinit var btnCalendar: ImageView
     private lateinit var btnGuardar: Button
-    private lateinit var btnEditar: ImageButton
     private lateinit var btnEliminar: ImageButton
-
 
     private var docId: String = ""
 
@@ -38,6 +37,15 @@ class verproducto_fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val imgAbrir = view.findViewById<ImageView>(R.id.btnsalir)
+
+        imgAbrir.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.frame_container, home_fragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
 
         txtNombreProducto = view.findViewById(R.id.txtnombreproducto)
         spinnerCategoria = view.findViewById(R.id.spinnercategoria)
@@ -46,19 +54,15 @@ class verproducto_fragment : Fragment() {
         btnClear = includeFecha.findViewById(R.id.btnClear)
         btnCalendar = includeFecha.findViewById(R.id.btnCalendar)
         btnGuardar = view.findViewById(R.id.btnguardar)
-        btnEditar = view.findViewById(R.id.btneditar)
         btnEliminar = view.findViewById(R.id.btneliminar)
-
 
         docId = arguments?.getString("docId") ?: ""
         val nombre = arguments?.getString("nombre") ?: ""
         val categoria = arguments?.getString("categoria") ?: ""
-        val fechaCompra = arguments?.getString("fecha_compra") ?: ""
         val fechaVencimiento = arguments?.getString("fecha_vencimiento") ?: ""
 
-
         txtNombreProducto.setText(nombre)
-
+        editTextFecha.setText(fechaVencimiento)
 
         val listaCategorias = listOf(
             "Otros...",
@@ -70,47 +74,30 @@ class verproducto_fragment : Fragment() {
             "Frutas y verduras",
             "Snacks"
         )
+
         val adapterSpinner = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listaCategorias)
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategoria.adapter = adapterSpinner
+        spinnerCategoria.isEnabled = false
 
         val index = listaCategorias.indexOf(categoria)
-        if (index >= 0) {
-            spinnerCategoria.setSelection(index)
-        }
+        if (index >= 0) spinnerCategoria.setSelection(index)
 
-
-        editTextFecha.setText(fechaVencimiento)
-
-
-        txtNombreProducto.isEnabled = false
-        spinnerCategoria.isEnabled = false
-        editTextFecha.isEnabled = false
-        btnCalendar.visibility = View.GONE
-        btnGuardar.visibility = View.GONE
-        btnEliminar.visibility = View.GONE
-
-
-        btnEditar.setOnClickListener {
-            txtNombreProducto.isEnabled = true
-            spinnerCategoria.isEnabled = true
-            editTextFecha.isEnabled = true
-            btnCalendar.visibility = View.VISIBLE
-            btnGuardar.visibility = View.VISIBLE
-            btnEliminar.visibility = View.VISIBLE
-            btnEditar.visibility = View.GONE
-        }
+        spinnerCategoria.isEnabled = true
+        txtNombreProducto.isEnabled = true
+        editTextFecha.isEnabled = true
+        btnCalendar.visibility = View.VISIBLE
+        btnGuardar.visibility = View.VISIBLE
 
 
         btnCalendar.setOnClickListener {
             val calendar = Calendar.getInstance()
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
-                { _, selectedYear, selectedMonth, selectedDay ->
+                { _, y, m, d ->
                     val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    calendar.set(selectedYear, selectedMonth, selectedDay)
-                    val fechaSeleccionada = formato.format(calendar.time)
-                    editTextFecha.setText(fechaSeleccionada)
+                    calendar.set(y, m, d)
+                    editTextFecha.setText(formato.format(calendar.time))
                     btnClear.visibility = View.VISIBLE
                 },
                 calendar.get(Calendar.YEAR),
@@ -119,6 +106,7 @@ class verproducto_fragment : Fragment() {
             )
             datePickerDialog.show()
         }
+
         btnClear.setOnClickListener {
             editTextFecha.setText("")
             btnClear.visibility = View.GONE
@@ -135,8 +123,7 @@ class verproducto_fragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            if (currentUser == null) {
+            val currentUser = FirebaseAuth.getInstance().currentUser ?: run {
                 Toast.makeText(requireContext(), "Usuario no autenticado", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -148,22 +135,26 @@ class verproducto_fragment : Fragment() {
                 "fechaVencimiento" to nuevaFechaVencimiento
             )
 
-            val db = FirebaseFirestore.getInstance()
-            db.collection("usuarios")
+            FirebaseFirestore.getInstance()
+                .collection("usuarios")
                 .document(uid)
                 .collection("productos")
                 .document(docId)
                 .update(updatedData as Map<String, Any>)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Producto actualizado", Toast.LENGTH_SHORT).show()
-                    txtNombreProducto.isEnabled = false
-                    spinnerCategoria.isEnabled = false
-                    editTextFecha.isEnabled = false
-                    btnCalendar.visibility = View.GONE
-                    btnGuardar.visibility = View.GONE
-                    btnEliminar.visibility = View.GONE
-                    btnEditar.visibility = View.VISIBLE
+
+
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.frame_container, productos_fragment())
+                        .commit()
+
+
+                    requireActivity()
+                        .findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+                        .selectedItemId = R.id.navigation_home
                 }
+
                 .addOnFailureListener { e ->
                     Toast.makeText(requireContext(), "Error al actualizar: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -179,14 +170,13 @@ class verproducto_fragment : Fragment() {
                         Toast.makeText(requireContext(), "No se pudo identificar el producto", Toast.LENGTH_SHORT).show()
                         return@setPositiveButton
                     }
-                    val currentUser = FirebaseAuth.getInstance().currentUser
-                    if (currentUser == null) {
+                    val currentUser = FirebaseAuth.getInstance().currentUser ?: run {
                         Toast.makeText(requireContext(), "Usuario no autenticado", Toast.LENGTH_SHORT).show()
                         return@setPositiveButton
                     }
                     val uid = currentUser.uid
-                    val db = FirebaseFirestore.getInstance()
-                    db.collection("usuarios")
+                    FirebaseFirestore.getInstance()
+                        .collection("usuarios")
                         .document(uid)
                         .collection("productos")
                         .document(docId)
@@ -199,9 +189,7 @@ class verproducto_fragment : Fragment() {
                             Toast.makeText(requireContext(), "Error al eliminar: ${e.message}", Toast.LENGTH_SHORT).show()
                         }
                 }
-                .setNegativeButton("Cancelar") { dialog, _ ->
-                    dialog.dismiss()
-                }
+                .setNegativeButton("Cancelar") { dialog, _ -> dialog.dismiss() }
                 .create()
                 .show()
         }

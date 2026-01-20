@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
-
-
 
 class Agregarproducto_fragment : Fragment() {
 
@@ -34,6 +33,7 @@ class Agregarproducto_fragment : Fragment() {
         val btnClear = includeFecha.findViewById<ImageView>(R.id.btnClear)
         val btnCalendar = includeFecha.findViewById<ImageView>(R.id.btnCalendar)
         val btnAgregar = view.findViewById<Button>(R.id.btnagregar)
+        val imgCerrar = view.findViewById<ImageView>(R.id.btnsalirr)
 
 
         val categorias = listOf(
@@ -53,23 +53,18 @@ class Agregarproducto_fragment : Fragment() {
 
         btnCalendar.setOnClickListener {
             val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
-
             val datePickerDialog = DatePickerDialog(
                 requireContext(),
-                { _, selectedYear, selectedMonth, selectedDay ->
-
+                { _, year, month, dayOfMonth ->
+                    calendar.set(year, month, dayOfMonth)
                     val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    calendar.set(selectedYear, selectedMonth, selectedDay)
-                    val fechaSeleccionada = formato.format(calendar.time)
-                    editTextFecha.setText(fechaSeleccionada)
+                    editTextFecha.setText(formato.format(calendar.time))
                     btnClear.visibility = View.VISIBLE
                 },
-                year, month, day
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
             )
-
             datePickerDialog.show()
         }
 
@@ -85,6 +80,17 @@ class Agregarproducto_fragment : Fragment() {
         }
 
 
+        imgCerrar.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.frame_container, productos_fragment())
+                .commit()
+
+            requireActivity()
+                .findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+                .selectedItemId = R.id.navigation_home
+        }
+
+
         btnAgregar.setOnClickListener {
             val nombreProducto = txtNombreProducto.text.toString().trim()
             val categoria = spinner.selectedItem.toString()
@@ -96,7 +102,6 @@ class Agregarproducto_fragment : Fragment() {
             }
 
             val fechaCompra = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-
             val currentUser = FirebaseAuth.getInstance().currentUser
             if (currentUser == null) {
                 Toast.makeText(requireContext(), "Inicia sesión para guardar tus productos", Toast.LENGTH_SHORT).show()
@@ -112,17 +117,28 @@ class Agregarproducto_fragment : Fragment() {
                 "fechaCreacion" to FieldValue.serverTimestamp()
             )
 
-            val db = FirebaseFirestore.getInstance()
-            db.collection("usuarios")
+            FirebaseFirestore.getInstance()
+                .collection("usuarios")
                 .document(uid)
                 .collection("productos")
                 .add(productoData)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Producto agregado correctamente", Toast.LENGTH_SHORT).show()
 
+
                     txtNombreProducto.text.clear()
                     editTextFecha.text.clear()
                     btnClear.visibility = View.GONE
+
+
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.frame_container, productos_fragment())
+                        .commit()
+
+
+                    requireActivity()
+                        .findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+                        .selectedItemId = R.id.navigation_home
 
 
                     programarNotificacion(nombreProducto, fechaVencimiento, requireContext())
@@ -131,6 +147,5 @@ class Agregarproducto_fragment : Fragment() {
                     Toast.makeText(requireContext(), "Error al guardar: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
         }
-
     }
 }
