@@ -68,12 +68,10 @@ class Agregarproducto_fragment : Fragment() {
             datePickerDialog.show()
         }
 
-
         btnClear.setOnClickListener {
             editTextFecha.setText("")
             btnClear.visibility = View.GONE
         }
-
 
         editTextFecha.setOnClickListener {
             btnCalendar.performClick()
@@ -101,12 +99,29 @@ class Agregarproducto_fragment : Fragment() {
                 return@setOnClickListener
             }
 
+
+            try {
+                val formato = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val fechaSeleccionada = formato.parse(fechaVencimiento)
+                val hoySinHora = formato.parse(formato.format(Date()))
+
+                if (fechaSeleccionada != null && fechaSeleccionada.before(hoySinHora)) {
+                    Toast.makeText(requireContext(), "La fecha no puede ser anterior a hoy", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Formato de fecha inválido", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val fechaCompra = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
             val currentUser = FirebaseAuth.getInstance().currentUser
+
             if (currentUser == null) {
                 Toast.makeText(requireContext(), "Inicia sesión para guardar tus productos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             val uid = currentUser.uid
 
             val productoData = hashMapOf(
@@ -125,21 +140,17 @@ class Agregarproducto_fragment : Fragment() {
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Producto agregado correctamente", Toast.LENGTH_SHORT).show()
 
-
                     txtNombreProducto.text.clear()
                     editTextFecha.text.clear()
                     btnClear.visibility = View.GONE
-
 
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.frame_container, productos_fragment())
                         .commit()
 
-
                     requireActivity()
                         .findViewById<BottomNavigationView>(R.id.bottomNavigationView)
                         .selectedItemId = R.id.navigation_home
-
 
                     programarNotificacion(nombreProducto, fechaVencimiento, requireContext())
                 }

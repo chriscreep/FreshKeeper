@@ -48,8 +48,7 @@ class registrar_activity : AppCompatActivity() {
 
                 contraseñaEditText.error = "La contraseña debe tener al menos 6 caracteres"
                 contraseñaEditText.requestFocus()
-                Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+
             }
 
             registrarUsuario(correo, contraseña)

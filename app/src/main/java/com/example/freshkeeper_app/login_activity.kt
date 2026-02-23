@@ -59,13 +59,28 @@ class login_activity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 
-
                     programarAlarmasDesdeFirestore()
 
                     startActivity(Intent(this, home_activity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+
+                    val exception = task.exception
+                    val mensaje = when {
+                        exception?.message?.contains("password") == true ->
+                            "La contraseña es incorrecta"
+
+                        exception?.message?.contains("no user record") == true ||
+                                exception?.message?.contains("no user") == true ->
+                            "No existe una cuenta con este correo"
+
+                        exception?.message?.contains("badly formatted") == true ->
+                            "El formato del correo no es válido"
+
+                        else -> "Credenciales incorrectas. Verifique su correo y contraseña."
+                    }
+
+                    Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
                 }
             }
     }
